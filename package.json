@@ -1,0 +1,28 @@
+{
+  "name": "exchange-api-consumer",
+  "version": "1.0.0",
+  "description": "Web application to consume https://exchangeratesapi.io/ API",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigoEsquel/Exchange-API-Consumer.git"
+  },
+  "keywords": [
+    "API"
+  ],
+  "author": "Rodrigo Fernandez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigoEsquel/Exchange-API-Consumer/issues"
+  },
+  "homepage": "https://github.com/rodrigoEsquel/Exchange-API-Consumer#readme",
+  "devDependencies": {
+    "cypress": "^9.5.3"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
+}
