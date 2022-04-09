@@ -10,29 +10,42 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class="bg-blue-100">
 
-  <div class="container mx-auto px-4 bg-cyan-200">
-    <div>
-      <div>
-        <div>Hola</div><button id="boton">Calcular</button>
+  <div class="w-full p-8 flex justify-center font-sans">
+    <div class="rounded bg-blue-200 w-80 p-2">
+      <div class="flex justify-center py-1">
+        <h2 class="text-xl">Bienvenidos a RATES-API</h2>
       </div>
-      <div>
-        <form>
-        </form>
-      </div>
-      <div>
-        <table>
-          <tr>
-            <th>Rates</th>
-            <th>Value</th>
-          </tr>
-
-        </table>
-      </div>
+      <details name="menu" class="bg-white p-0 rounded mt-1">
+        <summary name="configuracion"
+          class="rounded cursor-pointer bg-blue-300 hover:bg-blue-100 m-0 flex place-content-center h-8 p-1">
+          <h2 class="text-md">Configuracion</h2>
+        </summary>
+        <div>
+          <form class="flex justify-around">
+          </form>
+        </div>
+      </details>
+      <details name="menu" class="bg-white p-0 rounded mt-1">
+        <summary name="consulta"
+          class="rounded cursor-pointer bg-blue-300 hover:bg-blue-100 m-0 flex place-content-center h-8 p-1">
+          <h2 class="text-md">Consulta</h2>
+        </summary>
+        <div>
+          <div class="flex justify-center p-1">
+            <button id="boton" class="rounded cursor-pointer bg-blue-200 hover:bg-blue-100 w-20">Cargar</button>
+          </div>
+          <table>
+            <tr>
+              <th>Rates</th>
+              <th>Value</th>
+            </tr>
+          </table>
+        </div>
+      </details>
     </div>
   </div>
-
 
 
   <script src="src/index.js"></script>

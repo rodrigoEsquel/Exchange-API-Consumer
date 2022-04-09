@@ -41,6 +41,15 @@ function crearTablaResutados() {
 
 crearInputs();
 crearTablaResutados();
+
+$('summary').on('click', (event) => {
+  $('[name="menu"]').each((_i, elem) => {
+    if (event.target.parentElement !== elem) {
+      $(elem).attr('open', false);
+    }
+  });
+});
+
 const $boton = document.querySelector('button');
 $boton.onclick = () => {
   actualizarElemento($('td'));
@@ -54,6 +63,8 @@ $boton.onclick = () => {
     API_KEY +
     '&symbols=' +
     monedasConsulta;
+
+  console.log(url);
 
   fetch(url)
     .then((response) => response.json())
