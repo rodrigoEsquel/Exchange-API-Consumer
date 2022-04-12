@@ -1,7 +1,14 @@
+//Constantes
+const baseUrl = 'http://api.exchangeratesapi.io/v1/';
 const API_KEY = '79b3a3b99fd743e4035834c995a9ec4e';
 const RATES = ['EUR', 'AUD', 'CAD', 'CHF', 'CNY', 'GBP', 'JPY', 'USD'];
 
-function crearDate() {
+//Inicializacion
+crearInputs();
+crearTablaResutados();
+
+//Funciones
+function crearDateInput() {
   return ($input = $(document.createElement('input'))
     .attr('type', 'date')
     .attr('id', 'date')
@@ -10,7 +17,7 @@ function crearDate() {
     .attr('max', new Date().toISOString().split('T')[0]));
 }
 
-function crearSelect() {
+function crearSelectInput() {
   $select = $(document.createElement('select'));
   RATES.forEach((elem) => {
     $select.append(
@@ -21,7 +28,7 @@ function crearSelect() {
 }
 
 function crearInputs() {
-  $form = $('form').append(crearDate()).append(crearSelect());
+  $form = $('form').append(crearDateInput()).append(crearSelectInput());
 }
 
 function actualizarElemento(elemento, valor = '') {
@@ -59,15 +66,17 @@ function ocultarOtrosDetails(event) {
     }
   });
 }
+
+//Handlers
 $('[name="configuracion"]').on('click', (event) => {
   ocultarOtrosDetails(event);
 });
+
 $('[name="consulta"]').on('click', (event) => {
   ocultarOtrosDetails(event);
   actualizarElemento($('td'));
   const fechaConsulta = $('#date').val();
   const monedasConsulta = RATES.join(',');
-  const baseUrl = 'http://api.exchangeratesapi.io/v1/';
   const url =
     baseUrl +
     fechaConsulta +
@@ -75,8 +84,6 @@ $('[name="consulta"]').on('click', (event) => {
     API_KEY +
     '&symbols=' +
     monedasConsulta;
-
-  console.log(url);
 
   fetch(url)
     .then((response) => response.json())
@@ -96,10 +103,8 @@ $('[name="consulta"]').on('click', (event) => {
         );
       } else {
         console.error('Error en la respuesta de la API');
+        console.error(data);
       }
     })
     .catch(console.error());
 });
-
-crearInputs();
-crearTablaResutados();
