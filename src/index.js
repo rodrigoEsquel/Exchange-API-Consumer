@@ -33,31 +33,43 @@ function crearTablaResutados() {
     $('table').append(
       $(document.createElement('tr'))
         .attr('id', elem)
-        .append($(document.createElement('td')).attr('class', 'rate'))
-        .append($(document.createElement('td')).attr('class', 'value'))
+        .attr('class', ' table-row')
+        .append(
+          $(document.createElement('td')).attr(
+            'class',
+            'rate table-cell text-center'
+          )
+        )
+        .append(
+          $(document.createElement('td')).attr(
+            'class',
+            'value table-cell text-center'
+          )
+        )
     );
   });
 }
 
-crearInputs();
-crearTablaResutados();
-
-$('summary').on('click', (event) => {
-  $('[name="menu"]').each((_i, elem) => {
-    if (event.target.parentElement !== elem) {
-      $(elem).attr('open', false);
+function ocultarOtrosDetails(event) {
+  $('summary').each((_i, elem) => {
+    console.log(event.currentTarget);
+    console.log(elem);
+    if (event.currentTarget !== elem) {
+      $(elem.parentElement).attr('open', false);
     }
   });
+}
+$('[name="configuracion"]').on('click', (event) => {
+  ocultarOtrosDetails(event);
 });
-
-const $boton = document.querySelector('button');
-$boton.onclick = () => {
+$('[name="consulta"]').on('click', (event) => {
+  ocultarOtrosDetails(event);
   actualizarElemento($('td'));
-
   const fechaConsulta = $('#date').val();
   const monedasConsulta = RATES.join(',');
+  const baseUrl = 'http://api.exchangeratesapi.io/v1/';
   const url =
-    'http://api.exchangeratesapi.io/v1/' +
+    baseUrl +
     fechaConsulta +
     '?access_key=' +
     API_KEY +
@@ -87,4 +99,7 @@ $boton.onclick = () => {
       }
     })
     .catch(console.error());
-};
+});
+
+crearInputs();
+crearTablaResutados();
