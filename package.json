@@ -4,7 +4,8 @@
   "description": "Web application to consume https://exchangeratesapi.io/ API",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "http-server",
+    "test": "cypress open"
   },
   "repository": {
     "type": "git",
