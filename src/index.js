@@ -1,5 +1,5 @@
 //Constantes
-const baseUrl = 'https://api.exchangeratesapi.io/v1/';
+const baseUrl = 'http://api.exchangeratesapi.io/v1/';
 const API_KEY = '79b3a3b99fd743e4035834c995a9ec4e';
 const RATES = ['EUR', 'AUD', 'CAD', 'CHF', 'CNY', 'GBP', 'JPY', 'USD'];
 
